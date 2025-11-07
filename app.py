@@ -440,15 +440,16 @@ elif menu == "Prediction":
             vn_salary_final = smooth_salary(EstimatedExperienceYears, student_salary, model_salary_vnd)
 
             # Chênh lệch với kỳ vọng
-            diff = expected_salary - vn_salary_final
+            diff_show = abs(expected_salary - vn_salary_final)
+            diff_cal = expected_salary - vn_salary_final
 
             # ============================================
             # 6️⃣ Display results
             # ============================================
             st.metric("💰 Estimated Salary (VNĐ/tháng)", f"{vn_salary_final:,.0f}")
-            st.metric("📊 Difference vs Expected", f"{diff:,.0f}")
+            st.metric("📊 Difference vs Expected", f"{diff_show:,.0f}")
 
-            if diff > 0:
+            if diff_cal > 0:
                 st.warning("⚠️ Your expectation is higher than estimated range.")
             else:
                 st.success("✅ Your expectation is within or below the estimated range.")
@@ -567,3 +568,4 @@ else:
     - ‍👩💻 Nguyễn Triệu Yến Nhi – Web App & Chatbot & Model Building Support 
     - ‍👨💻 Hồ Tấn Thành (Leader) – Model Building  
     """)
+
